@@ -1,0 +1,6 @@
+.idea
+target
+arminbetBackend.iml
+
+src/main/resources/application.properties
+src/main/resources/application.txt
