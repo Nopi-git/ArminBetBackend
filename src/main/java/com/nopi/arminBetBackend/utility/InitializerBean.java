@@ -2,7 +2,6 @@ package com.nopi.arminBetBackend.utility;
 
 import com.nopi.arminBetBackend.model.employee.Employee;
 import com.nopi.arminBetBackend.service.employeeService.EmployeeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -26,7 +25,7 @@ public class InitializerBean {
         employee5.setPendriveSerial("FB416CD10349").setUsername("elinescu.cosmin");
 
         Employee employee6 = new Employee();
-        employee6.setUsername("gavril.claudiu");
+        employee6.setUsername("gavril.claudiu").setPendriveSerial("12345678123456781234567812345678");
 
         Employee employee7 = new Employee();
         employee7.setPendriveSerial("5B01E9504897").setUsername("nyaguly.laszlo");

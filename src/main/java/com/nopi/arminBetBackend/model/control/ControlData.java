@@ -1,6 +1,7 @@
 package com.nopi.arminBetBackend.model.control;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.nopi.arminBetBackend.model.Agency;
 import com.nopi.arminBetBackend.model.employee.Employee;
 
 import javax.persistence.*;
@@ -13,7 +14,10 @@ public class ControlData {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Integer armId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"cui", "shortAddress", "fullAddress", "controls"})
+    @JoinColumn(name = "arm_id")
+    private Agency agency;
 
     private String description;
 
@@ -26,7 +30,7 @@ public class ControlData {
     private java.sql.Timestamp date;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JsonIgnore
+    @JsonIgnoreProperties({"username", "password", "pendriveSerial", "controlData"})
     private Employee employee;
 
     private String location;
@@ -52,12 +56,12 @@ public class ControlData {
         return this;
     }
 
-    public Integer getArmId() {
-        return armId;
+    public Agency getAgency() {
+        return agency;
     }
 
-    public ControlData setArmId(Integer armId) {
-        this.armId = armId;
+    public ControlData setAgency(Agency agency) {
+        this.agency = agency;
         return this;
     }
 
@@ -158,24 +162,5 @@ public class ControlData {
     public ControlData setControlFinancialData(ControlFinancialData controlFinancialData) {
         this.controlFinancialData = controlFinancialData;
         return this;
-    }
-
-    @Override
-    public String toString() {
-        return "ControlData{" +
-                "id=" + id +
-                ", armId=" + armId +
-                ", description='" + description + '\'' +
-                ", errorDescription='" + errorDescription + '\'' +
-                ", publicIp='" + publicIp + '\'' +
-                ", motherBoardSerial='" + motherBoardSerial + '\'' +
-                ", date=" + date +
-                ", employee=" + employee +
-                ", location='" + location + '\'' +
-                ", lastBootUpTime='" + lastBootUpTime + '\'' +
-                ", controlType='" + controlType + '\'' +
-                ", newInstall='" + newInstall + '\'' +
-                ", controlFinancialData=" + controlFinancialData +
-                '}';
     }
 }

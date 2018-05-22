@@ -3,6 +3,7 @@ package com.nopi.arminBetBackend.service.controlService;
 import com.nopi.arminBetBackend.model.control.ControlData;
 import com.nopi.arminBetBackend.model.employee.Employee;
 import com.nopi.arminBetBackend.repository.controlRepository.ControlDataRepository;
+import com.nopi.arminBetBackend.service.AgencyService;
 import com.nopi.arminBetBackend.service.employeeService.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,9 @@ public class ControlDataService {
     @Autowired
     EmployeeService employeeService;
 
+    @Autowired
+    AgencyService agencyService;
+
     public List<ControlData> findAll(){
         return controlDataRepository.findAll();
     }
@@ -33,5 +37,9 @@ public class ControlDataService {
     public void save(ControlData controlData){
 
         controlDataRepository.save(controlData);
+    }
+
+    public List<ControlData> findAllByEmployee_Id(Long employeeId){
+        return controlDataRepository.findAllByEmployee_Id(employeeId);
     }
 }
