@@ -1,13 +1,7 @@
 package com.nopi.arminBetBackend.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.nopi.arminBetBackend.model.control.ControlData;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.List;
 
 @Entity
 public class Agency {
@@ -22,9 +16,6 @@ public class Agency {
     private String cui;
 
     private boolean isActive;
-
-    @OneToMany(mappedBy = "agency")
-    private List<ControlData> controls;
 
     public Agency() {
     }
@@ -74,12 +65,4 @@ public class Agency {
         return this;
     }
 
-    public List<ControlData> getControls() {
-        return controls;
-    }
-
-    public Agency setControls(List<ControlData> controls) {
-        this.controls = controls;
-        return this;
-    }
 }

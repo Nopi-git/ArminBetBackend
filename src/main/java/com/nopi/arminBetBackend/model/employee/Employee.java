@@ -1,11 +1,11 @@
 package com.nopi.arminBetBackend.model.employee;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.nopi.arminBetBackend.model.control.ControlData;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.List;
 
 @Entity
@@ -21,9 +21,6 @@ public class Employee {
     private String password;
 
     private String username;
-
-    @OneToMany(mappedBy = "employee")
-    private List<ControlData> controlData;
 
     public Employee() {
     }
@@ -68,27 +65,4 @@ public class Employee {
         return this;
     }
 
-    public List<ControlData> getControlData() {
-        return controlData;
-    }
-
-    public Employee setControlData(List<ControlData> controlData) {
-        this.controlData = controlData;
-        return this;
-    }
-
-    public void addControl(ControlData controlData){
-        this.controlData.add(controlData);
-    }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", pendriveSerial='" + pendriveSerial + '\'' +
-                ", password='" + password + '\'' +
-                ", username='" + username + '\'' +
-                ", controlData=" + controlData +
-                '}';
-    }
 }

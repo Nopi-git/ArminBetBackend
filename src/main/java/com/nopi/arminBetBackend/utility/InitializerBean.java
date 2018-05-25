@@ -33,7 +33,7 @@ public class InitializerBean {
         Employee employee8 = new Employee();
         employee8.setUsername("vintila.alin");
 
-        Employee admin = new Employee().setPendriveSerial("2008012500000000000003C6").setUsername("admin");
+        Employee admin = new Employee().setPendriveSerial("0B0F1BB0F6C9").setUsername("admin");
         Employee admin1 = new Employee().setPendriveSerial("4C530200851112122325").setUsername("nyeste.sandor");
 
         employeeService.save(employee1);
