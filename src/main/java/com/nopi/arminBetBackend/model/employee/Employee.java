@@ -1,12 +1,10 @@
 package com.nopi.arminBetBackend.model.employee;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.nopi.arminBetBackend.model.Role;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.List;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Employee {
@@ -21,6 +19,12 @@ public class Employee {
     private String password;
 
     private String username;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "USER_ROLES", joinColumns = {
+            @JoinColumn(name = "USER_ID") }, inverseJoinColumns = {
+            @JoinColumn(name = "ROLE_ID") })
+    private Set<Role> roles;
 
     public Employee() {
     }
@@ -65,4 +69,23 @@ public class Employee {
         return this;
     }
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public Employee setRoles(Set<Role> roles) {
+        this.roles = roles;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", pendriveSerial='" + pendriveSerial + '\'' +
+                ", password='" + password + '\'' +
+                ", username='" + username + '\'' +
+                ", roles=" + roles +
+                '}';
+    }
 }

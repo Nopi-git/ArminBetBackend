@@ -10,4 +10,6 @@ import java.util.List;
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     public Employee findByPendriveSerial(String pendriveSerial);
+
+    public Employee findByUsername(String username);
 }
