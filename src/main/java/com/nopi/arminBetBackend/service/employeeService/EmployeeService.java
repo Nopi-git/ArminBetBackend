@@ -95,4 +95,8 @@ public class EmployeeService implements UserDetailsService {
         employee.setRoles(new HashSet<>(Collections.singletonList(newRole)));
         return employeeRepository.save(employee);
     }
+
+    public Employee findByUsername(String username){
+        return employeeRepository.findByUsername(username);
+    }
 }

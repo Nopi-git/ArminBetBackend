@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin
 public class ControlDataRestController {
 
     @Autowired
@@ -48,9 +49,10 @@ public class ControlDataRestController {
         return employeeService.findByPendriveSerial(pendriveSerial);
     }
 
-    /*@CrossOrigin
+    @CrossOrigin
     @GetMapping(value = "/employee/username={username}")
     public Employee getEmployeeByUsername(@PathVariable String username){
+        return employeeService.findByUsername(username);
+    }
 
-    }*/
 }
